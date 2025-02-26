@@ -37,3 +37,20 @@ calling the method using the object.
 
 Python gives importance to intentation.
 '''
+
+# Printing on same line
+print("Hello", end=" ") 
+print("Jello!")
+print("Hello", end="-") 
+print("Mello!")
+print("Hello", end="\t") 
+print("Fello!")
+print("Hello, Python!\t Welcome to the worlds of \n JELLO.")
+name = "Jello"
+print(f"Hello, {name}!") # String formatting with f and {}
+print(type(name))
+"""
+By default print() ends with a newline, which moves the text cursor to the next line.
+but by using end=" ", Pythons ends a line with a space instead of new line. this way the next print() statement will
+appear on the same line. end parameter by default is set to \n
+"""
