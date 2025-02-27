@@ -38,7 +38,13 @@ calling the method using the object.
 Python gives importance to intentation.
 '''
 
+#PRINTING
 # Printing on same line
+"""
+By default print() ends with a newline, which moves the text cursor to the next line.
+but by using end=" ", Pythons ends a line with a space instead of new line. this way the next print() statement will
+appear on the same line. end parameter by default is set to \n
+"""
 print("Hello", end=" ") 
 print("Jello!")
 print("Hello", end="-") 
@@ -49,8 +55,31 @@ print("Hello, Python!\t Welcome to the worlds of \n JELLO.")
 name = "Jello"
 print(f"Hello, {name}!") # String formatting with f and {}
 print(type(name))
-"""
-By default print() ends with a newline, which moves the text cursor to the next line.
-but by using end=" ", Pythons ends a line with a space instead of new line. this way the next print() statement will
-appear on the same line. end parameter by default is set to \n
-"""
+print (type(b"hello"))
+print(id(name)) #printing the memory address of the object
+
+#formatting a float while printing
+average = 34.98604853
+print(f"The average is : {average:.2f}")
+info= """I'm working at "Microsoft" """
+print(info)
+poem = '''Twinkle Twinkle, Little Star
+How I wonder what you are
+Up above the world so high
+Like a diamond in the sky
+Twinkle Twinkle Little Star
+How I wonder what you are! '''
+print(poem)
+data = "Coding"+"Game"
+print(data)
+
+#STRING MANIPULATION
+text = "I love Programming. It's fun"
+print("Length of the text is: ", len(text)) #Length of the text is:  28
+print("Character at index -1 is: ", text[-1]) #Character at index -1 is:  n
+slicing_text = text[3:]
+print("Slicing text from index 2: ", slicing_text) #Slicing text from index 2:  ove Programming. It's fun
+print("Slicing the text with giving start and end index: ", text[5: 10]) #Slicing the text with giving start and end index:  e Pro
+print("Finding a substring", text.find("o")) #3
+print("o" in text) #true
+print("replacing the text", text.replace("o", "e")) #I leve Pregramming. It's fun
