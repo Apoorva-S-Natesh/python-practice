@@ -97,3 +97,9 @@ print(s2)
 print(s2.lstrip('-'))
 print(s2.rstrip('-'))
 print(s2.strip('-')) #removes the leading and trailing spaces
+
+str1 = 'Python is a versatile and powerful language'
+split_str = str1.split(" ") #string to list
+print(f"Split list: {split_str}")
+joined_str = "-".join(split_str) #list to string
+print(f"Joined string: {joined_str}")
