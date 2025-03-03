@@ -83,3 +83,17 @@ print("Slicing the text with giving start and end index: ", text[5: 10]) #Slicin
 print("Finding a substring", text.find("o")) #3
 print("o" in text) #true
 print("replacing the text", text.replace("o", "e")) #I leve Pregramming. It's fun
+#text[1] = 'p' #TypeError: 'str' object does not support item assignment
+#print(text)
+text1 = "ooooo"
+print(f"id of {text[3]} and {text[9]} is {id(text[3])} and {id(text[9])}.THEY ARE THE SAME")
+print(f"Address of o in text1 is {id(text1[0])} | {id(text1[3])}")
+print("The adress of all the o is th o is same! Because everything in Python is an object.") 
+s1='	code	'
+print(s1)
+print(s1.strip()) #removes the leading and trailing spaces
+s2 = '---World---'
+print(s2)
+print(s2.lstrip('-'))
+print(s2.rstrip('-'))
+print(s2.strip('-')) #removes the leading and trailing spaces
