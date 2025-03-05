@@ -128,3 +128,29 @@ user_response = input("Do you like Icecream? (yes/no): ").lower()
 print(type(user_response))
 is_ice_cream_lover = user_response == "yes"
 print(f"{type(is_ice_cream_lover)}, Do you like ice cream? , {is_ice_cream_lover}")
+
+
+#######
+
+#int():
+print(int(12.23)) #float to int conversion	##output: 12
+print(int(True)) #bool to int conversion	##output: 1
+#print(int('a')) #string to int converstion	##ValueError
+#print(int('')) #empty string to int			##valueError
+print(int('123')) #string holidng an int conversion #123
+#print(int('123.3')) #string holidng float to int conversion #error
+
+#float():
+print(float(123)) #123.0 --int to float conversion
+#float('code') #error -- string holding string to float 
+print(float('123.12')) #123.12 -- string holding float to float 
+print(float(True)) # 1.0 -- bool to flaot converstion
+print(float(False)) #0.0 --bool to float conversion
+print(float('123')) #123.0 --string holding int to float 
+
+#bool();
+print(bool(12)) #True --int to bool conversion
+print(bool(12.34)) #True --float to bool conversion
+print(bool('code')) #True --string holding string to bool
+print(bool(0)) #False --int to bool
+print(bool('')) #False --empty string to bool
