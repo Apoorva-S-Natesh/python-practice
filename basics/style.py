@@ -103,3 +103,28 @@ split_str = str1.split(" ") #string to list
 print(f"Split list: {split_str}")
 joined_str = "-".join(split_str) #list to string
 print(f"Joined string: {joined_str}")
+
+
+#### T Y P E    C A S T I N G #####
+
+#int();
+a = '10'
+b = int(a)
+print(f"{type(a)} | affter typecasting {int(a)} the type is {type(b)}")
+#print (int('12.54')) #ValueError: invalid literal for int() with base 10: '12.54'
+'''cannot convert a string which holds a float to int in Python. String holding integer to integer is allowed for tyecasting'''
+print(int(True)) # output 1
+print(int(False)) # Output 0
+
+#float();
+h = (input("Enter your height in meters: "))
+print(type(h))
+height = float(input("Enter your height in meters: "))
+print(type(height))
+
+#boolean();
+#taking a boolean input from the user
+user_response = input("Do you like Icecream? (yes/no): ").lower()
+print(type(user_response))
+is_ice_cream_lover = user_response == "yes"
+print(f"{type(is_ice_cream_lover)}, Do you like ice cream? , {is_ice_cream_lover}")
