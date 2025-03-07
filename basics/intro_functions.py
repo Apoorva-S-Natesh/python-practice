@@ -51,3 +51,16 @@ def table(num):
 
 num=int(input("Enter the number to print table :"))
 table(num)
+
+print()
+
+string = "Hello World"
+for x in string:
+    print(x)
+## pass keyword ## 
+''' used to declare empty blocks.
+Say I want to create a mothod whose logic is not ready yet, but that methos is required
+so we declare the function or block and write pass inside it'''
+def function_not_ready_yet():
+	pass ##if not present gives this error 
+	'''IndentationError: expected an indented block after function definition on line 59'''
