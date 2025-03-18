@@ -1,4 +1,5 @@
 rows = int(input("Enter rows:"))
+"""
 for i in range(1, rows+1):
 	print("* " * i)
 
@@ -32,7 +33,6 @@ for i in range(n - 1, -1, -1):
         print("")
         
 
-""" this can be written in a conscise way """
 n = 4  # Number of rows in the upper half
 
 for i in range(n * 2 - 1):
@@ -49,3 +49,24 @@ for i in range(n):
 # Lower half
 for i in range(n -1, -1, -1):
     print(" " * (n - i - 1) + "*" + (" " * (2 * i - 1) + "*" if i > 0 else ""))
+"""
+
+## Hill pattern hollow inside
+for i in range(rows):
+    for j in range(i, rows-1):
+        print(" ", end=" ")
+    for k in range(i+1):
+         print("*" if(k==0 or i==rows-1) else " ", end=" ")
+    for m in range(i):
+          print("*" if m==i-1 or i==rows-1 else " ",end=" ")
+    print()
+    
+## inverted Hill
+for i in range(rows):
+     for j in range(i):
+          print("-", end=" ")
+     for k in range(i+1, rows):
+          print("*", end=" ")
+     for m in range(i, rows):
+          print("*", end=" ")
+     print()
