@@ -54,7 +54,7 @@ for i in range(n -1, -1, -1):
 ## Hill pattern hollow inside
 for i in range(rows):
     for j in range(i, rows-1):
-        print(" ", end=" ")
+        print("-", end=" ")
     for k in range(i+1):
          print("*" if(k==0 or i==rows-1) else " ", end=" ")
     for m in range(i):
@@ -62,11 +62,27 @@ for i in range(rows):
     print()
     
 ## inverted Hill
-for i in range(rows):
+for i in range(1, rows):
      for j in range(i):
           print("-", end=" ")
      for k in range(i+1, rows):
           print("*", end=" ")
      for m in range(i, rows):
+          print("*", end=" ")
+     print()
+    
+print()
+
+### Right Pascal Trinagle ###
+for i in range(rows):
+     for j in range(i+1, rows):
+          print("-", end=" ")
+     for k in range(i+1):
+          print("*", end=" ")
+     print()
+for i in range(1, rows):
+     for j in range(i):
+          print("-", end=" ")
+     for k in range(i,rows):
           print("*", end=" ")
      print()
