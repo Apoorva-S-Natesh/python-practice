@@ -41,3 +41,12 @@ print(10 > 5 and 70 == 70)
 print(False and True)
 print(40!=0 and 60==60)
 print(not True)
+
+userData = input("Enter list of elements separated by space: ")
+li = userData.split() #String to list userData.split('-')
+print(li)
+newli = []
+for i in li:
+	newli.append(int(i)) 
+    
+print(sum(newli)/len(newli)) #average
