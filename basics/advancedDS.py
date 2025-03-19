@@ -136,15 +136,22 @@ print(dictionary1)
 2. Ordered colletion of Data
 3. Allows dulpicate values for values but not duplicate keys
 4. Dictionary is mutable
+5. dictionay is an iterable object
 """
 
 for i in dictionary1.values():
 	print(i,end=" - ") # Apoorva-28-Natesh-
 
 for i in dictionary1.keys():
-	print(i, end=" : ")
+	print(i, end=" : ") # name : age : surname :
 
 print()
 
 for i in dictionary1.items():
-	print(i)
+	print(i) 
+"""
+output:
+('name', 'Apoorva')
+('age', 28)
+('surname', 'Natesh')
+"""
