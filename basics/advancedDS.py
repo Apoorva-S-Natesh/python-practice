@@ -87,8 +87,23 @@ set1 = {10, 20, 30, 'Code', True}
 print(set1)
 
 # set1[1] = 40 #TypeError: 'set' object does not support item assignment
+set1.add(300)
 print(set1)
 
+set1.remove(True)
+print(set1)
+
+#set1.remove("true")
+#print(set1)
+
+set1 = {3, 3, 4, 4, 2, 1}
+set2 = set([4, 5, 6, 3]) #Initializing set usin set() method
+
+combined = set1.union(set2)
+print(combined)
+
+intersection = set1.intersection(set2)
+print(intersection)
 """
 1. Set  can store both homogenous and heterogenous data (data with different DataType and Same DataType)
 2. UnOrdered Collection of Data.Set does not maintains order of insertion in the output
@@ -97,3 +112,39 @@ print(set1)
 Unindexed- we can't access the items with [i] as with lists
 Iterable-we can loop over the items of a set
 """
+
+##                        DICTIONARY   key-value pairs                            ##
+dictionary1 = {
+	'name' : 'Apoorva',
+	'age' : 28,
+	'hobbies' : ('Dancing', 'Painting', 'Running', 'Walking', 'Cooking'),
+	'number': 123456789,
+	'surname' :'Apoorva' 
+}
+
+print(dictionary1)
+dictionary1['surname'] = 'Natesh'
+print(dictionary1['surname'])
+
+hobbies = dictionary1.pop('hobbies')
+print(hobbies)
+del dictionary1['number']
+print(dictionary1)
+
+"""
+1. stores both homogenous adn heterogenous data
+2. Ordered colletion of Data
+3. Allows dulpicate values for values but not duplicate keys
+4. Dictionary is mutable
+"""
+
+for i in dictionary1.values():
+	print(i,end=" - ") # Apoorva-28-Natesh-
+
+for i in dictionary1.keys():
+	print(i, end=" : ")
+
+print()
+
+for i in dictionary1.items():
+	print(i)
