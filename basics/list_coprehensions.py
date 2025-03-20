@@ -44,3 +44,27 @@ print(newlist5)
 nested_list = [[1, 2,3], [4,5,6], [7,8,9]]
 float_list = [num for sublist in nested_list for num in sublist]
 print(float_list)
+
+#                 map                       #
+
+def square(ele):
+  return ele ** 2
+
+result = map(square, list1) # for each element of list1 gives the square of it
+print(result)  # <map object at 0x0000020C6009FCD0>
+
+print(list(result)) # [1, 4, 9, 16, 25, 36]
+
+list4 = ['10', '20', '30', '40', '50', '60', '70']
+new_list4 = list(map(int, list4)) # or list(map(float, list4)) or list(map(bool, list4))
+print(new_list4)
+
+#        list slicing          #
+"""		 Syntax : listname[startIndex : endIndex : steps]    """
+
+print(list4[::]) #list slicing start is 0, end is length-1, duplicating the list
+print(list4[::2]) #['10', '30', '50', '70'] :2 steps (steps are based on index)
+print(list4[1::]) # ['20', '30', '40', '50', '60', '70'] : start from index 1, steps 0, end default
+print(list4[:4:]) # ['10', '20', '30', '40'] : start index 0, end index: 4, steps: 0
+print(list4[1:3]) # ['20', '30']
+print(list4[1:5:2]) # ['20', '40']
