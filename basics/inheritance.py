@@ -120,13 +120,13 @@ class Test4(Test5):
 
 t4 = Test4(3,5)
 t4.add()
-
 ### MRO and super()
+"""
 class Example1:
 	def __init__(self):
 		self.x = 100
 
-class Example2:
+class Example2():
 	def __init__(self):
 		self.x = 200
 		super().__init__()
@@ -135,6 +135,27 @@ class Example3(Example2, Example1):
 	pass
 
 ex3 = Example3()
-print("x is",ex3.x) # 100 
+print("x is",ex3.x) # 100
+# MRO and super()
+# Example3 --> Example2 --> Example1 --> Object 
+"""
 """ In the above example: MRO sequence is Example3 ---> Example2 ---> Example1 
 since Example2 doesnt have a base class, Example1 constructor will be called"""
+
+class Example1:
+	def __init__(self):
+		self.x = 100
+		super().__init__() # This super will call next class constructor as per MRO
+
+class Example2():
+	def __init__(self):
+		self.x = 200
+		super().__init__() # This super will call next class constructor as per MRO
+
+class Example3(Example1, Example2):
+	pass
+
+ex3 = Example3()
+print("x is",ex3.x) # 200 
+# MRO and super()
+# Example3 --> Example1 --> Example2 --> Object
