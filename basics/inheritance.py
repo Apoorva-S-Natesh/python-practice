@@ -151,7 +151,7 @@ class Example2():
 	def __init__(self):
 		self.x = 200
 		super().__init__() # This super will call next class constructor as per MRO
-
+		#when in multiple inheritance this could be written as Example1.__init__(self, arguments)
 class Example3(Example1, Example2):
 	pass
 
