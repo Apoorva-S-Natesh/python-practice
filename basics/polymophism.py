@@ -75,3 +75,50 @@ print("hello"+"World")
 print(s1-s2)
 print(s1/s2)
 """One Operator performing multiple tasks. '+' can perform addtion, perfom string concatenation"""
+
+
+##						4.Duck Typing							##
+
+class Parrot:
+	def fly(self):
+		print("Parrot is flying high in the sky!")
+	
+class Airplane:
+	def fly(self):
+		print("Airplane is taking off!")
+
+#Function using duck typing
+def make_it_fly(thing):
+	thing.fly()
+
+parrot = Parrot()
+airplane = Airplane()
+
+make_it_fly(parrot)
+make_it_fly(airplane)
+
+"""
+Duck typing is based on the saying, "If it looks like a duck and quacks like a duck, it must be a duck"
+here it means that any object that has the needed behavior can be used withot worrying about its exact type
+
+"""
+
+## eXample 2
+class Add:
+	def calculate(self, a, b):
+		print(a + b)
+
+class Mul:
+	def calculate(self,a, b):
+		print(a * b)
+
+class Div:
+	def calculate(self, a,b):
+		print(a / b)
+
+def operate(operator):
+	operator.calculate(40, 10)
+
+operate(Add())
+operate(Mul())
+operate(Div())
