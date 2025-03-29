@@ -16,6 +16,24 @@ def display(a,b,c):
 #display(30, 50) #Error: Missing 1 required positional argument
 display(10, 30 , 50)
 
+# Polymorphism achieved through args
+def add(datatype, *args):
+
+    if datatype == 'int':
+        answer = 0
+
+    if datatype == 'str':
+        answer = ''
+
+    for x in args:
+        answer = answer + x
+
+    print(answer)
+
+add('int', 5, 6)
+add('str', 'Hi ', 'Apoorva')
+
+
 ###  	              2.Method OverRiding                ###
 
 class Parent:
