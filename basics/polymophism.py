@@ -140,3 +140,30 @@ def operate(operator):
 operate(Add())
 operate(Mul())
 operate(Div())
+
+class ComplexNumber:
+    def __init__(self, real, imaginary):
+        self.real = real
+        self.imaginary = imaginary
+
+    def __add__(self, other):
+        return ComplexNumber(self.real + other.real, self.imaginary + other.imaginary)
+
+    def __mul__(self, other):
+        real_part = (self.real * other.real) - (self.imaginary * other.imaginary)
+        imaginary_part = (self.real * other.imaginary) + (self.imaginary * other.real)
+        return ComplexNumber(real_part, imaginary_part)
+
+    def __str__(self):
+        return f"{self.real} + {self.imaginary}i"
+
+num1_real = int(input())
+num1_imaginary = int(input())
+other_real = int(input())
+other_imaginary = int(input())
+
+num1 = ComplexNumber(num1_real, num1_imaginary)
+num2 = ComplexNumber(other_real, other_imaginary)
+
+print("Sum:", num1 + num2)
+print("Product:", num1 * num2)
