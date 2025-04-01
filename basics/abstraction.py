@@ -54,7 +54,10 @@ class Cycle(Vehicle):
 
 c2 = Cycle()
 """
-ABC - Abstract Base Class 
+abc - module
+ABC - Abstract Base Class
+inside an abc module ABC class is present
+ 
 """
 	
 
