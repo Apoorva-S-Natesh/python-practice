@@ -9,11 +9,20 @@ class Demo:
 			print(self._lastname)
 			print(self.__middleName)
 
+		def _protected_method(self):
+			print(self.name)
+			print(self._lastname)
+			print(self.__middleName)
+
+		#def __protected_method(Self):
+		#	print(self.name)
+
 d1 = Demo()
 d1.display()
 print(d1.name) #Accessing public property outside the class - Allowed
 print(d1._lastname) # Accessing protected variable outside the class - Allowed
 #print(d1.__middleName) # Accessing private variable outside the class - Not allowed
+d1._protected_method()
 
 class Demo1(Demo):
 	def disp(self):
