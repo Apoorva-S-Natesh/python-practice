@@ -22,3 +22,27 @@ finally:
 	print("Cleaning the resources")
 
 print("other tasks")
+
+
+##############     				Custom exception                  #######
+class InvalidAge(Exception):
+	pass
+
+def checkAge(age):
+	if age < 18:
+		raise InvalidAge("Age has to be greater then 18")
+	elif age > 100:
+		raise InvalidAge("Age has to be between 18 to 100")
+	
+print("Enter the age")
+try:
+	age = int(input())
+except ValueError:
+	print("Age should be a valid number")
+else:
+	try:
+		checkAge(age)
+	except InvalidAge as e:
+		print("Invalid age Exeption detials:",e) #e has the detail of the exception, "Age has to be greater then 18"
+finally:
+	print("Submit documents for verification")
