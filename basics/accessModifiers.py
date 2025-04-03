@@ -38,7 +38,7 @@ class Code:
 		print(d1.name)  #Accessing public property inside Non-child class - allowed
 		print(d1._lastname)  #Accessing protected property inside Non-child class - allowed
 		#print(d1.__middleName) # Accessing private property inside non-shild class - Not allowed
-
+		print (d1._Demo__middleName) # -Name Mangling : Is the process of giving new name to prive variable in the format of : _Classname__VariableName. Private variable accesed outside the class
 c = Code()
 c.display()
 
@@ -47,4 +47,8 @@ c.display()
 public : When we want to access variable anywhere in the code
 protected : When we want to access variable inside the same class and inside child class
 private : when we want to access variables only inside the same class
+
+In Python, access modifiers are conventions, not strict enforcement.
+Developers can access protected and private members if necessary.
+Its only a way to tell a developer how the data has to be used.
 '''
