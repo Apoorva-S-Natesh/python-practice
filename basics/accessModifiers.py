@@ -37,7 +37,7 @@ class Code:
 	def display(self):
 		print(d1.name)  #Accessing public property inside Non-child class - allowed
 		print(d1._lastname)  #Accessing protected property inside Non-child class - allowed
-		#print(d1.__middleName) # Accessing private property inside non-shild class - Not allowed
+		print(d1.__middleName) # Accessing private property inside non-shild class - Not allowed
 		print (d1._Demo__middleName) # -Name Mangling : Is the process of giving new name to prive variable in the format of : _Classname__VariableName. Private variable accesed outside the class
 c = Code()
 c.display()
