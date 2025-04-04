@@ -30,7 +30,7 @@ def square(nums):
 
 print(sum(square(fibonacci_numbers(10))))
 
-# Output: 4895
+# Output: 4895 - sum of squares of 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55
 
 '''
 When the generator function is called, it does not execute the function body immediately. 
