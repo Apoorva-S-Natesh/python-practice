@@ -36,3 +36,20 @@ print(sum(square(fibonacci_numbers(10))))
 When the generator function is called, it does not execute the function body immediately. 
 Instead, it returns a generator object that can be iterated over to produce the values.
 '''
+
+def display2():
+	print("start")
+	yield 10
+	print("Task2 ")
+	yield 20
+	print("Task 2")
+	yield 30
+     
+res = display2()
+# print(res.__next__()) //res itself is an iterator object, can be directly looped over. No need of __next__() method
+# print(res.__next__())
+# print(res.__next__())
+# print(res.__next__())
+
+for i in res:
+    print(i)
