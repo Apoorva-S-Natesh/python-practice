@@ -157,3 +157,19 @@ a_stand_alone_function_decorated()
 #Before the function runs
 #I am a stand alone function, don't you dare modify me
 #After the function runs
+
+
+############# Decorator with parameter
+def repeat_decorator(times):
+    def decorator(func):
+        def wrapper():
+            for _ in range(times):
+                func()
+        return wrapper
+    return decorator
+
+@repeat_decorator(3)
+def say_hello():
+      print("Hello, Jello")     
+
+say_hello()
