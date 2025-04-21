@@ -20,3 +20,25 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
+"""
+Django's command-line utility script. It lets you run commands like:
+
+runserver - start the dev server
+
+migrate - apply database migrations
+
+startapp - create a new app
+
+createsuperuser - make an admin account
+
+run it like: python manage.py runserver
+
+File			What it does
+__init__.py		Marks this directory as a Python package.
+settings.py		Where you configure your whole project — databases, apps, static files, etc.
+urls.py	The 	central URL routing file — maps URLs to views.
+asgi.py	Used 	for ASGI deployments (e.g., WebSockets).
+wsgi.py	Used 	for WSGI deployments (classic Python web servers).
+"""
