@@ -29,6 +29,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+# Delivery (application name )is added to the Installed apps - registering the app here
 
 INSTALLED_APPS = [
     'django.contrib.admin',
