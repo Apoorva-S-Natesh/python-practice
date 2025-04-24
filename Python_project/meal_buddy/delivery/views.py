@@ -30,3 +30,17 @@ def signup(request):
 
 	#return HttpResponse("Request for signup received")
 	return render(request, 'delivery/signin.html')
+
+def signin(request):
+	if request.method == 'POST':
+		username = request.POST.get('username')
+		password = request.POST.get('password')
+
+	#Need to check if this username and password exits in database
+	#if get() works then it returns the CUstomer object if the user does not exits the we get an Exception
+	try:
+		Customer.objects.get(username = username, password = password) # instance variable usrename = fetched data username
+		return render(request, 'delivery/success.html')
+	
+	except Customer.DoesNotExist:
+		return render(request, 'delivery/fail.html')

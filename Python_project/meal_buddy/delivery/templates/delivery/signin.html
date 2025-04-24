@@ -9,7 +9,8 @@
 	<main>
 		<div id="sign-in-container">
 			<h2>Sign in below:</h2>
-			<form id="sign-in-form">
+			<form id="sign-in-form" action="{% url 'signin' %}" method="post">
+				{% csrf_token %}
 				<label for="username">Username</label>
 				<input type="text" name="username" id="username" \>
 				<br><br>
