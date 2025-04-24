@@ -42,3 +42,5 @@ urls.py	The 	central URL routing file — maps URLs to views.
 asgi.py	Used 	for ASGI deployments (e.g., WebSockets).
 wsgi.py	Used 	for WSGI deployments (classic Python web servers).
 """
+
+#superuser password - 123 (/admin)

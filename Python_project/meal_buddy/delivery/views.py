@@ -40,7 +40,10 @@ def signin(request):
 	#if get() works then it returns the CUstomer object if the user does not exits the we get an Exception
 	try:
 		Customer.objects.get(username = username, password = password) # instance variable usrename = fetched data username
-		return render(request, 'delivery/success.html')
+		if (username == 'admin'):
+			return render(request, 'delivery/admin_home.html')
+		else:
+			return render(request, 'delivery/customer_home.html')
 	
 	except Customer.DoesNotExist:
 		return render(request, 'delivery/fail.html')
