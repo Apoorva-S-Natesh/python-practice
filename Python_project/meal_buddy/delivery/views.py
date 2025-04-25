@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Customer
+from .models import Customer,Restaurant
 
 # Create your views here.
 def index(request):
@@ -20,13 +20,18 @@ def signup(request):
 		mobile = request.POST.get('mobile')
 		address = request.POST.get('address')
 
-		Customer.objects.create(
-			username = username, 
-			password = password,
-			email = email,
-			mobile = mobile,
-			address = address,
-		)
+		#If a user already exists then new oobject is not created
+		try:
+			Customer.objects.get(username = username)
+			return HttpResponse("User exists! Try Signing In!")
+		except:
+			Customer.objects.create(
+				username = username, 
+				password = password,
+				email = email,
+				mobile = mobile,
+				address = address,
+			)
 
 	#return HttpResponse("Request for signup received")
 	return render(request, 'delivery/signin.html')
@@ -40,10 +45,31 @@ def signin(request):
 	#if get() works then it returns the CUstomer object if the user does not exits the we get an Exception
 	try:
 		Customer.objects.get(username = username, password = password) # instance variable usrename = fetched data username
-		if (username == 'admin'):
-			return render(request, 'delivery/admin_home.html')
+		if username == 'admin':
+			return render(request, 'delivery/admin_home.html') # Only one user redirected to admin page (username: admin, password: 123)
 		else:
 			return render(request, 'delivery/customer_home.html')
 	
 	except Customer.DoesNotExist:
 		return render(request, 'delivery/fail.html')
+	
+def open_add_restaurant(request):
+	return render(request, 'delivery/add_restaurant.html')
+
+def add_restaurant(request):
+	if request.method == 'POST':
+		restaurantName = request.POST.get('restaurantName')
+		picutreUrl = request.POST.get('picutreUrl')
+		cuisine = request.POST.get('cuisine')
+		rating = request.POST.get('rating')
+
+	try:
+		Restaurant.objects.get(restaurantName = restaurantName)
+		return HttpResponse("Restaurant Exists")
+	except: 
+		Restaurant.objects.create(
+		restaurantName = restaurantName,
+		picutreUrl = picutreUrl,
+		cuisine = cuisine,
+		rating = rating,
+		)
