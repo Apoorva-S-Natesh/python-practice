@@ -58,18 +58,23 @@ def open_add_restaurant(request):
 
 def add_restaurant(request):
 	if request.method == 'POST':
-		restaurantName = request.POST.get('restaurantName')
-		picutreUrl = request.POST.get('picutreUrl')
+		name = request.POST.get('name')
+		picture = request.POST.get('picture')
 		cuisine = request.POST.get('cuisine')
 		rating = request.POST.get('rating')
 
 	try:
-		Restaurant.objects.get(restaurantName = restaurantName)
+		Restaurant.objects.get(name = name)
 		return HttpResponse("Restaurant Exists")
 	except: 
 		Restaurant.objects.create(
-		restaurantName = restaurantName,
-		picutreUrl = picutreUrl,
-		cuisine = cuisine,
-		rating = rating,
+			name = name,
+			picture = picture,
+			cuisine = cuisine,
+			rating = rating,
 		)
+	return render(request, 'delivery/admin_home.html')
+
+def open_show_restaurant(request):
+	restaurantList = Restaurant.objects.all() #Fetching all the restuarant objects
+	return render(request, 'delivery/open_show_restaurant.html', {"restaurantList" : restaurantList})
