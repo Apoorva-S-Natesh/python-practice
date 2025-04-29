@@ -78,3 +78,6 @@ def add_restaurant(request):
 def open_show_restaurant(request):
 	restaurantList = Restaurant.objects.all() #Fetching all the restuarant objects
 	return render(request, 'delivery/open_show_restaurant.html', {"restaurantList" : restaurantList})
+
+def open_update_restaurant(request):
+	return render(request, 'delivery/update_restaurant.html')
