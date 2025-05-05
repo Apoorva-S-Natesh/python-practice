@@ -18,7 +18,7 @@ class Restaurant(models.Model):
 	rating = models.FloatField()
 
 class Item(models.Model):
-	restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE, related_name = "items")
+	restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE, related_name = "items") #CASCADE : If the Restaurant is deleted all the tables accessing it will be deleted, related_name = "items" to fetch all the data related to the item
 	name = models.CharField(max_length=30)
 	description = models.CharField(max_length = 200)
 	price = models.FloatField()

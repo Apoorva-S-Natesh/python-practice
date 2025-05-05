@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Customer,Restaurant
+from .models import Customer,Restaurant,Item
 
 # Create your views here.
 def index(request):
@@ -112,3 +112,31 @@ def open_update_menu(request, restaurant_id):
 	restaurant = Restaurant.objects.get(id = restaurant_id)
 
 	return render(request, 'delivery/update_menu.html', {"restaurant" : restaurant})
+
+
+def update_menu(request, restaurant_id):
+	restaurant = Restaurant.objects.get(id=restaurant_id)
+
+	if request.method == 'POST':
+		restaurant = request.POST.get('restaurant')
+		name = request.POST.get('name')
+		description = request.POST.get('description')
+		price = request.POST.get('price')
+		vegetarian = request.POST.get('vegetarian')
+		picture = request.POST.get('picture')
+
+	try:
+		Item.objects.get(name = name)
+		return HttpResponse("Restaurant Exists")
+	except: 
+		Item.objects.create(
+			restaurant = restaurant,
+			name = name,
+			description = description,
+			price = price,
+			vegetarian = vegetarian,
+			picture = picture,
+		)
+	return render(request, 'delivery/open_show_restaurant.html')
+	
+	#return HttpResponse("Received")
