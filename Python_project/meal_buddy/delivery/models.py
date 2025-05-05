@@ -12,6 +12,16 @@ class Customer(models.Model):
 
 class Restaurant(models.Model):
 	name = models.CharField(max_length = 20)
-	picture = models.URLField(max_length = 200, default='https://i.pinimg.com/736x/19/b1/48/19b148ef0b3b6af0592f6bbb9a2fee68.jpg')
+	picture = models.URLField(max_length = 200, default='https://i.pinimg.com/' \
+	'736x/19/b1/48/19b148ef0b3b6af0592f6bbb9a2fee68.jpg')
 	cuisine = models.CharField(max_length = 200)
 	rating = models.FloatField()
+
+class Item(models.Model):
+	restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE, related_name = "items")
+	name = models.CharField(max_length=30)
+	description = models.CharField(max_length = 200)
+	price = models.FloatField()
+	vegetarian = models.BooleanField(default=True)
+	picture = models.URLField(max_length=200, default='https://i.pinimg.com/736x/' \
+	'8b/f0/4f/8bf04f38445553c66196f423b74eab1d.jpg')
