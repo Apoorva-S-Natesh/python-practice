@@ -113,12 +113,16 @@ def open_update_menu(request, restaurant_id):
 
 	return render(request, 'delivery/update_menu.html', {"restaurant" : restaurant})
 
+def open_update_menu(request, restaurant_id):
+	restaurant = Restaurant.objects.get(id=restaurant_id)
+	itemList = Item.objects.all()
+	return render(request, 'delivery/update_menu.html', {"itemList" : itemList, "restaurant" : restaurant})
+
 
 def update_menu(request, restaurant_id):
 	restaurant = Restaurant.objects.get(id=restaurant_id)
-
+	
 	if request.method == 'POST':
-		restaurant = request.POST.get('restaurant')
 		name = request.POST.get('name')
 		description = request.POST.get('description')
 		price = request.POST.get('price')
@@ -127,7 +131,7 @@ def update_menu(request, restaurant_id):
 
 	try:
 		Item.objects.get(name = name)
-		return HttpResponse("Restaurant Exists")
+		return HttpResponse("Duplicate Item")
 	except: 
 		Item.objects.create(
 			restaurant = restaurant,
@@ -137,6 +141,7 @@ def update_menu(request, restaurant_id):
 			vegetarian = vegetarian,
 			picture = picture,
 		)
-	return render(request, 'delivery/open_show_restaurant.html')
+
+	return render(request, 'delivery/update_menu.html')
 	
 	#return HttpResponse("Received")

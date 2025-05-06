@@ -22,6 +22,6 @@ class Item(models.Model):
 	name = models.CharField(max_length=30)
 	description = models.CharField(max_length = 200)
 	price = models.FloatField()
-	vegetarian = models.BooleanField(default=True)
+	vegetarian = models.BooleanField(null=True, default=False)
 	picture = models.URLField(max_length=200, default='https://i.pinimg.com/736x/' \
 	'8b/f0/4f/8bf04f38445553c66196f423b74eab1d.jpg')
