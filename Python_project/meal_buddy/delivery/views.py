@@ -146,3 +146,34 @@ def update_menu(request, restaurant_id):
 	return render(request, 'delivery/update_menu.html', {"itemList": itemList, "restaurant": restaurant})
 	
 	#return HttpResponse("Received")
+
+def open_update_item(request, item_id):
+	item = Item.objects.get(id = item_id)
+	return render(request, 'delivery/upadate_item.html', {"item" : item})
+
+def update_item(request, item_id):
+	item = Item.objects.get(id = item_id)
+	if request.method == 'POST':
+		name = request.POST.get('name')
+		description = request.POST.get('description')
+		price = request.POST.get('price')
+		vegetarian = request.POST.get('is_veg')
+		picture = request.POST.get('picture')
+
+		name = name
+		description = description
+		price = price
+		vegetarian = vegetarian
+		picture = picture
+
+		item.save()
+
+	restaurantList = Restaurant.objects.all()
+	return render(request, 'delivery/show_restaurants.html', {"restaurantList" : restaurantList})
+
+def delete_item(request, item_id):
+	item = Item.objects.get(id = item_id)
+	item.delete()
+
+	restaurantList = Restaurant.objects.all()
+	return render(request, 'delivery/show_restaurants.html', {"restaurantList" : restaurantList})
