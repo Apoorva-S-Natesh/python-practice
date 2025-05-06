@@ -157,23 +157,25 @@ def update_item(request, item_id):
 		name = request.POST.get('name')
 		description = request.POST.get('description')
 		price = request.POST.get('price')
-		vegetarian = request.POST.get('is_veg')
+		vegetarian = request.POST.get('is_veg') == 'on'
 		picture = request.POST.get('picture')
 
-		name = name
-		description = description
-		price = price
-		vegetarian = vegetarian
-		picture = picture
+		item.name = name
+		item.description = description
+		item.price = price
+		item.vegetarian = vegetarian
+		item.picture = picture
 
 		item.save()
 
-	restaurantList = Restaurant.objects.all()
-	return render(request, 'delivery/show_restaurants.html', {"restaurantList" : restaurantList})
+	restaurant = item.restaurant
+	itemList = Item.objects.filter(restaurant=restaurant)
+	return render(request, 'delivery/update_menu.html', {"itemList": itemList, "restaurant": restaurant})
 
 def delete_item(request, item_id):
 	item = Item.objects.get(id = item_id)
 	item.delete()
 
-	restaurantList = Restaurant.objects.all()
-	return render(request, 'delivery/show_restaurants.html', {"restaurantList" : restaurantList})
+	restaurant = item.restaurant
+	itemList = Item.objects.filter(restaurant=restaurant)
+	return render(request, 'delivery/update_menu.html', {"itemList": itemList, "restaurant": restaurant})
