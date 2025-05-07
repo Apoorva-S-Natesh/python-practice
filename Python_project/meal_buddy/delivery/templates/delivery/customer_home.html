@@ -7,5 +7,29 @@
 </head>
 <body>
 	<H3>Welcome to Customer Home!</H3>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>Restaurant name</th>
+				<th>picture</th>
+				<th>Cuisine</th>
+				<th>Rating</th>
+				<th>Menu</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for r in restaurantList %}
+				<tr>
+					<td>{{r.name}}</td>
+					<td>
+						<img src="{{r.picture}}" height="100px">
+					</td>
+					<td>{{r.cuisine}}</td>
+					<td>{{r.rating}}</td>
+					<td><a href="{% url 'view_menu' r.id%}">View Menu</a></td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 </body>
 </html>

@@ -48,7 +48,8 @@ def signin(request):
 		if username == 'admin':
 			return render(request, 'delivery/admin_home.html') # Only one user redirected to admin page (username: admin, password: 123)
 		else:
-			return render(request, 'delivery/customer_home.html')
+			restaurantList = Restaurant.objects.all()
+			return render(request, 'delivery/customer_home.html', {"restaurantList" : restaurantList})
 	
 	except Customer.DoesNotExist:
 		return render(request, 'delivery/fail.html')
@@ -126,7 +127,7 @@ def update_menu(request, restaurant_id):
 		name = request.POST.get('name')
 		description = request.POST.get('description')
 		price = request.POST.get('price')
-		vegetarian = request.POST.get('is_veg')
+		vegetarian = request.POST.get('is_veg') == 'on'
 		picture = request.POST.get('picture')
 
 	try:
@@ -142,7 +143,9 @@ def update_menu(request, restaurant_id):
 			picture = picture,
 		)
 
-	itemList = Item.objects.filter(restaurant=restaurant)
+	#itemList = Item.objects.all()
+	itemList = restaurant.items.all()
+	#itemList = Item.objects.filter(restaurant=restaurant)
 	return render(request, 'delivery/update_menu.html', {"itemList": itemList, "restaurant": restaurant})
 	
 	#return HttpResponse("Received")
@@ -179,3 +182,8 @@ def delete_item(request, item_id):
 	restaurant = item.restaurant
 	itemList = Item.objects.filter(restaurant=restaurant)
 	return render(request, 'delivery/update_menu.html', {"itemList": itemList, "restaurant": restaurant})
+
+def view_menu(request, restaurant_id) :
+	restaurant = Restaurant.objects.get(id=restaurant_id)
+	itemList = Item.objects.filter(restaurant=restaurant)
+	return render(request, 'delivery/view_menu.html', {"itemList": itemList})
