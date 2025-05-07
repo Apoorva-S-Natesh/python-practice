@@ -186,4 +186,4 @@ def delete_item(request, item_id):
 def view_menu(request, restaurant_id) :
 	restaurant = Restaurant.objects.get(id=restaurant_id)
 	itemList = Item.objects.filter(restaurant=restaurant)
-	return render(request, 'delivery/view_menu.html', {"itemList": itemList})
+	return render(request, 'delivery/view_menu.html', {"itemList": itemList, "restaurant": restaurant})
