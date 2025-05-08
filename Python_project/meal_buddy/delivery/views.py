@@ -183,7 +183,10 @@ def delete_item(request, item_id):
 	itemList = Item.objects.filter(restaurant=restaurant)
 	return render(request, 'delivery/update_menu.html', {"itemList": itemList, "restaurant": restaurant})
 
-def view_menu(request, restaurant_id) :
+def view_menu(request, restaurant_id, username) :
 	restaurant = Restaurant.objects.get(id=restaurant_id)
 	itemList = Item.objects.filter(restaurant=restaurant)
-	return render(request, 'delivery/customer_menu.html', {"itemList": itemList, "restaurant": restaurant})
+	return render(request, 'delivery/customer_menu.html', {"itemList": itemList, "restaurant": restaurant, "username":username})
+
+def add_to_cart(request, item_id, username) :
+	return HttpResponse("added to cart")
