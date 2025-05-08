@@ -16,7 +16,7 @@
 				<th>Item name</th>
 				<th>Description</th>
 				<th>Price</th>
-				<th>Vegetarian</th>
+				<th>Is Veg</th>
 				<th>Add Item</th>
 			</tr>
 		</thead>
@@ -30,7 +30,9 @@
 					<td>{{item.description}}</td>
 					<td>{{item.price}}</td>
 					<td>{{item.vegetarian}}</td>
-					<td><button>Add to Cart</button></td>
+					<td>
+						<a href="{% url 'add_to_cart' item.id username %}">Add to Cart
+						</a></td>
 				</tr>
 			{% endfor %}
 		</tbody>
