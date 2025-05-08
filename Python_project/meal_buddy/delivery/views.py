@@ -49,7 +49,7 @@ def signin(request):
 			return render(request, 'delivery/admin_home.html') # Only one user redirected to admin page (username: admin, password: 123)
 		else:
 			restaurantList = Restaurant.objects.all()
-			return render(request, 'delivery/customer_home.html', {"restaurantList" : restaurantList})
+			return render(request, 'delivery/customer_home.html', {"restaurantList" : restaurantList, "username" : username})
 	
 	except Customer.DoesNotExist:
 		return render(request, 'delivery/fail.html')

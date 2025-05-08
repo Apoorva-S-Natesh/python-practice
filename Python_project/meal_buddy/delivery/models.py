@@ -32,3 +32,6 @@ class Cart(models.Model):
 
 	def total_price(self):
 		return sum(item.price for item in self.items.all())
+	
+class Cart_Item(models.Model):
+	pass
