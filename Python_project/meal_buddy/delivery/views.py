@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Customer,Restaurant,Item
+from .models import Customer,Restaurant,Item,Cart, Cart_Item
 
 # Create your views here.
 def index(request):
@@ -189,4 +189,11 @@ def view_menu(request, restaurant_id, username) :
 	return render(request, 'delivery/customer_menu.html', {"itemList": itemList, "restaurant": restaurant, "username":username})
 
 def add_to_cart(request, item_id, username) :
+	item = Item.objects.get(id = item_id)
+	customer = Customer.objects.get(username = username)
+	cart, created = Cart.objects.get_or_create(customer = customer) # If there is no item in the cart then it doesnt exists, then create a cart
+	#creates is avariable (bool) considering if variable is present or not, if present returns the same if not its createed
+	
+	cart.items.add(item)
+	
 	return HttpResponse("added to cart")
