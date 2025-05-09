@@ -195,5 +195,9 @@ def add_to_cart(request, item_id, username) :
 	#creates is avariable (bool) considering if variable is present or not, if present returns the same if not its createed
 	
 	cart.items.add(item)
-	
+
 	return HttpResponse("added to cart")
+
+def view_cart(request, username):
+	return HttpResponse(f"In {username}'s cart")
+
