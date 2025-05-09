@@ -34,4 +34,10 @@ class Cart(models.Model):
 		return sum(item.price for item in self.items.all())
 	
 class Cart_Item(models.Model):
-	pass
+	cart = models.ForeignKey(Cart, on_delete=models.CASCADE, related_name = "cart_items")
+	menu_item = models.ForeignKey('Item', on_delete=models.CASCADE)
+	quantity = models.PositiveIntegerField(default = 1)
+	added_at = models.DateTimeField(auto_now_add = True)
+
+	def get_price(self):
+		return self.menu_item.price * self.quantity
