@@ -200,4 +200,3 @@ def add_to_cart(request, item_id, username) :
 
 def view_cart(request, username):
 	return HttpResponse(f"In {username}'s cart")
-
