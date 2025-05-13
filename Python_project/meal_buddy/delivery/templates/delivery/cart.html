@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Cart</title>
+</head>
+<body>
+	<h2>{{username}}'s Cart</h2>
+	<h3>Total price {{total_price}}</h3>
+	<button>Pay Now</button>
+
+	<table border="1">
+		<thead>
+			<tr>
+				<th>Item</th>
+				<th>Item name</th>
+				<th>description</th>
+				<th>Price</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for item in items %}
+				<tr>
+					<td>
+						<img src="{{item.picture}}" height="150px">
+					</td>
+					<td>{{item.name}}</td>
+					<td>{{item.description}}</td>
+					<td>{{item.price}}</td>
+					<td>
+						<a href="">Delete</a>
+						<br>
+						<button>+1</button><button>-1</button>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</body>
+</html>

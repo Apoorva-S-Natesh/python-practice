@@ -199,4 +199,11 @@ def add_to_cart(request, item_id, username) :
 	return HttpResponse("added to cart")
 
 def view_cart(request, username):
-	return HttpResponse(f"In {username}'s cart")
+	customer = Customer.objects.get(username = username)
+	cart = Cart.objects.filter(customer = customer).first() #Fetching all the objects from Cart table which belong to the perticular customer and fetching the first of them
+	# That returns a list of the latest cart
+	items = cart.items.all() if cart else [] # if cart objects exists then give all items present in the cart if not gives an empty list
+	total_price = cart.total_price() if cart else 0
+
+	#return HttpResponse(f"In {username}'s cart")
+	return render(request, 'delivery/cart.html', {"items": items, "total_price": total_price, "username":username})
