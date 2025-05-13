@@ -1,16 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Welcome Page</title>
 	{% load static %}
-	<!--<link rel="stylesheet" href="{% static '/css/styles.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-	<main>
-		<h3>Welcome to Meal Buddy!</h3>
-		<a href="open_signin" id="sign-in">Sign In</a>
-		<br><br>
-		<a href="open_signup" id="sign-up">Sign Up</a>
+	<header>
+		<nav>
+			<div class="logo">Mealbuddy</div>
+			<ul>
+				<li><a href="#">About</a></li>
+				<li><a href="#">Pricing</a></li>
+				<li><a href="#">Support</a></li>
+				<li><a href="#">Contact</a></li>
+				<li><a href="#" class="app-btn">Get the App</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main class="hero-section">
+		<div class="hero-text">
+			<h1>Discover Delicious Meals Delivered Fast</h1>
+			<p>Order from your favourite restaurants and enjoy food delivered to your door in minutes.</p>
+			<div class="cta-buttons">
+				<a href="open_signin" class="btn">Sign In</a>
+				<a href="open_signup" class="btn">Sign Up</a>
+			</div>
+		</div>
+		<div class="hero-image">
+			<img src="{% static 'images/hero_image.png' %}" alt="Delicious food">
+		</div>
 	</main>
+
+	<footer>
+		<p>&copy; 2025 MealBuddy. All Rights Reserved.</p>
+	</footer>
 </body>
 </html>
