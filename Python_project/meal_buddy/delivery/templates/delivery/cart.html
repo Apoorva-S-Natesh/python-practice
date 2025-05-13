@@ -7,9 +7,7 @@
 </head>
 <body>
 	<h2>{{username}}'s Cart</h2>
-	<h3>Total price {{total_price}}</h3>
-	<button>Pay Now</button>
-
+	
 	<table border="1">
 		<thead>
 			<tr>
@@ -37,6 +35,10 @@
 				</tr>
 			{% endfor %}
 		</tbody>
+		<h3>Total price {{total_price}}</h3>
+		<form action="{% url 'checkout' username %}">
+			<input type="submit" value="CHECK OUT" />
+		</form>
 	</table>
 </body>
 </html>

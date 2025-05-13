@@ -207,3 +207,7 @@ def view_cart(request, username):
 
 	#return HttpResponse(f"In {username}'s cart")
 	return render(request, 'delivery/cart.html', {"items": items, "total_price": total_price, "username":username})
+
+
+def checkout(request, username):
+	return HttpResponse('Payment page')
