@@ -1,16 +1,18 @@
 :root {
-	--primary-background-color:#f9cf50;
+	--primary-background-color:#f6f6f6;
+	--background-gradient1:#CFF679;
+	--background-gradient2:#E4FAB3;
 	--primary-text-color:#292828;
 	--dark-text-color:#666;
-	--accent-color:#7BAA0C;
+	--button-color:#292828;
 	--light-text:#fff;
 }
 
 body {
-	font-family: 'Poppins', sans-serif;
+	font-family:'Outfit', sans-serif;
 	margin:0;
 	padding:0;
-	background-color: var(--primary-background-color);
+    background-color: var(--primary-background-color);
 	color:var(--primary-text-color);
 }
 
@@ -19,7 +21,16 @@ body {
 	flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: var(--primary-background-color);
+	/* background:linear-gradient(var(--background-gradient1), var(--background-gradient2)); */
+    background: linear-gradient(
+        to bottom,
+        var(--background-gradient1) 0%,
+        var(--background-gradient2) calc(50% + 150px),
+        var(--primary-background-color) calc(50% + 150px),
+        var(--primary-background-color) 100%
+    );
+	gap:30px;
+	overflow: hidden;
 }
 
 .hero-text{
@@ -29,7 +40,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	gap:5px;
+	gap:10px;
 }
 
 .hero-text h1{
@@ -40,27 +51,31 @@ body {
 .hero-text p{
 	font-size: 18px;
 	color:var(--primary-text-color);
+	padding-bottom:5px;
+}
+
+.cta-buttons{
+	display:flex;
+	gap:50px;
 }
 
 .btn{
-	background-color: var(--primary-text-color);
+	background-color: var(--button-color);
 	color:var(--light-text);
 	padding:12px 30px;
 	border-radius: 20px;
 	font-weight: normal;
 	text-decoration: none;
-	margin-right: 15px;
+	width:100px;
 }
 
 .hero-image img {
     width: 500px;
     height: auto;
+	transform:rotate(90deg);
 }
 
 footer {
     text-align: center;
-    padding: 20px;
-    background-color: var(--light-text);
-    box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.1);
-    margin-top: 50px;
+    padding: 50px;
 }
