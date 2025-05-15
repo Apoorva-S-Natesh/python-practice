@@ -3,16 +3,16 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+	
 	<title>Welcome Page</title>
 	{% load static %}
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
 </head>
 <body>
 	<main class="hero-section">
 		<div class="hero-text">
-			<h1>Discover Delicious Meals Delivered Fast</h1>
-			<p>Order from your favourite restaurants and enjoy food delivered to your door in minutes.</p>
+			<h1>Delicious Meals, Delivered to Your Door.</h1>
+			<p>Craving something tasty? Get it delivered fresh and hot, right when you need it.</p>
 			<div class="cta-buttons">
 				<a href="open_signin" class="btn">Sign In</a>
 				<a href="open_signup" class="btn">Sign Up</a>
@@ -22,9 +22,5 @@
 			<img src="{% static 'images/hero_image5.png' %}" alt="Delicious food">
 		</div>
 	</main>
-
-	<footer>
-		<p>&copy; 2025 MealBuddy. All Rights Reserved.</p>
-	</footer>
 </body>
 </html>

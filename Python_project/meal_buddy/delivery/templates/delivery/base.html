@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <title>{% block title %}MealBuddy{% endblock %}</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+    {% block extra_css %}
+    <!-- Additional CSS loaded in specific templates -->
+    {% endblock %}
+</head>
+<body>
+	<div class="content">
+		{% block content %}{% endblock %}
+	</div>
+
+	<footer>
+		<p>&copy; 2025 MealBuddy. All Rights Reserved.</p>
+	</footer>
+</body>
+</html>
