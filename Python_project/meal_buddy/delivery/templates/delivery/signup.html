@@ -4,29 +4,43 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Sign Up</title>
+	{% load static %}
+    <link rel="stylesheet" href="{% static 'css/signin_signup.css' %}">
+
 </head>
 <body>
-	<h3>SIGN UP below</h3>
-
-	<form action="{% url 'signup' %}" method="post">
-		{% csrf_token %}
-        <label>Username </label>
-        <input type="text" name="username">
-        <br><br>
-        <label>Password </label>
-        <input type="password" name="password">
-        <br><br>
-        <label>Email </label>
-        <input type="email" name="email">
-        <br><br>
-        <label>Mobile </label>
-        <input type="text" name="mobile">
-        <br><br>
-        <label>Address </label>
-        <textarea name="address"></textarea>
-        <br><br>
-        <button type="submit">SIGN UP</button>
-    </form>
+	<main>
+		<div id="sign-in_img">
+			<img src="{% static 'images/sign_in_side.png' %}" alt="burger"/>
+		</div>
+		<div id ="sign-in-container">		
+			<h3>Sign Up for free</h3>
+			<form action="{% url 'signup' %}" method="post">
+					{% csrf_token %}
+					<div class="form-group">
+						<label>Username </label>
+						<input type="text" name="username">
+					</div>
+					<div class="form-group">
+						<label>Password </label>
+						<input type="password" name="password">
+					</div>
+					<div class="form-group">
+						<label>Email </label>
+						<input type="email" name="email">
+					</div>
+					<div class="form-group">
+						<label>Mobile </label>
+						<input type="text" name="mobile">
+					</div>
+					<div class="form-group">
+						<label>Address </label>
+						<textarea name="address"></textarea>
+					</div>
+					<button type="submit" class="btn">SIGN UP</button>
+				</form>
+		</div>
+	</main>
 </body>
 </html>
 
