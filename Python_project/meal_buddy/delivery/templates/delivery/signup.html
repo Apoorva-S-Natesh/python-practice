@@ -5,15 +5,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Sign Up</title>
 	{% load static %}
-    <link rel="stylesheet" href="{% static 'css/signin_signup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
 
 </head>
 <body>
 	<main>
-		<div id="sign-in_img">
-			<img src="{% static 'images/sign_in_side.png' %}" alt="burger"/>
+		<div id="sign-up_img">
+			<img src="{% static 'images/sign_up_side.png' %}" alt="burger"/>
 		</div>
-		<div id ="sign-in-container">		
+		<div id ="sign-up-container">		
 			<h3>Sign Up for free</h3>
 			<form action="{% url 'signup' %}" method="post">
 					{% csrf_token %}
