@@ -1,3 +1,13 @@
+:root {
+	--primary-background-color:#f6f6f6;
+	--background-gradient1:#CFF679;
+	--background-gradient2:#E4FAB3;
+	--primary-text-color:#292828;
+	--dark-text-color:#666;
+	--button-color:#292828;
+	--light-text:#fff;
+}
+
 .hero-section {
     display: flex;
 	flex-direction: column;
@@ -46,16 +56,6 @@
     width: 500px;
     height: auto;
 	transform:rotate(90deg);
-}
-
-:root {
-	--primary-background-color:#f6f6f6;
-	--background-gradient1:#CFF679;
-	--background-gradient2:#E4FAB3;
-	--primary-text-color:#292828;
-	--dark-text-color:#666;
-	--button-color:#292828;
-	--light-text:#fff;
 }
 
 body {

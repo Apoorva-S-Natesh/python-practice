@@ -4,8 +4,37 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>customer home</title>
+	{% load static %}
+    <link rel="stylesheet" href="{% static 'css/customer_home.css' %}">
+
 </head>
 <body>
+	<h3>Welcome {{username}}!</h3>
+	<div class="restaurant-grid">
+		{% for r in restaurantList %}
+			<div class="restaurant-tile">
+				<div class="restaurant-image">
+					<img src="{{r.picture}}" alt="{{r.name}}">
+				</div>
+				<div class="restaurant-info">
+					<h4>{{r.name}}</h4>
+					<p>{{r.cuisine}}</p>
+					<div class="rating">
+						{% for i in "12345" %}
+							<span class="star{% if i <= r.rating|stringformat:"d" %} filled{% endif %}">★</span>
+						{% endfor %}
+					</div>
+				</div>
+				<div class="view-menu">
+					<a href="{% url 'view_menu' r.id username %}" class="btn">View Menu</a>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+</body>
+</html>
+
+<!-- <body>
 	<H3>Welcome {{username}}!</H3>
 	<table border="1">
 		<thead>
@@ -32,4 +61,4 @@
 		</tbody>
 	</table>
 </body>
-</html>
+</html> -->
