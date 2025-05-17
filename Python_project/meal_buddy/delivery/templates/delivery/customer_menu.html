@@ -4,15 +4,43 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Menu</title>
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'css/customer_menu.css' %}">
+
 </head>
 <body>
-	<h2>Welcome {{username}}</h2>
-	<a href="{% url 'view_cart' username %}">Go to Cart</a>
+	<div class="menu-header">
+		<h2>Welcome, {{username}}</h2>
+		<a href="{% url 'view_cart' username %}" class="cart-btn">Go to Cart</a>
+	</div>
 
-	<h2>{{restaurant.name}}</h2>
-	<img src="{{restaurant.picture}}" height="100px">
-	<h4>{{restaurant.cuisine}}</h4>
-	<table border="1">
+	<div class="restaurant-info">
+		<img src="{{ restaurant.picture }}" alt="{{ restaurant.name }}" class="restaurant-banner">
+		<h2>{{ restaurant.name }}</h2>
+		<h4 class="cuisine">{{ restaurant.cuisine }}</h4>
+	</div>
+
+	<div class="menu-grid">
+		{% for item in itemList %}
+			<div class="menu-card">
+				<img src="{{ item.picture }}" alt="{{ item.name }}" class="item-image">
+				<div class="item-info">
+					<div class="item-header">
+						<h4>{{ item.name }}</h4>
+						<span class="veg-indicator {% if item.vegetarian %}veg{% else %}non-veg{% endif %}"></span>
+					</div>
+					<p class="price">₹{{ item.price }}</p>
+					<p class="description">{{ item.description }}</p>
+					<div class="button-container">
+						<a href="{% url 'add_to_cart' item.id username %}" class="add-to-cart-btn">Add to Cart</a>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+</body>
+</html>
+	<!-- <table border="1">
 		<thead>
 			<tr>
 				<th>Picture</th>
@@ -41,4 +69,4 @@
 		</tbody>
 	</table>
 </body>
-</html>
+</html> -->
