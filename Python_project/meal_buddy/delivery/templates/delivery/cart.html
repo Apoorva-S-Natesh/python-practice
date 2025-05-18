@@ -4,8 +4,45 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Cart</title>
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'css/customer_menu.css' %}">
+
 </head>
 <body>
+    <h2>{{username}}'s Cart</h2>
+
+    <div class="menu-grid">
+        {% for item in items %}
+            <div class="menu-card">
+                <img src="{{item.picture}}" class="item-image" alt="Item Image">
+                <div class="item-info">
+                    <div class="item-header">
+                        <h4>{{item.name}}</h4>
+                        <span class="veg-indicator {% if item.vegetarian %}veg{% else %}non-veg{% endif %}"></span>
+                    </div>
+                    <p class="description">{{item.description}}</p>
+                    <div class="price">₹{{item.price}}</div>
+                </div>
+                <div class="button-container">
+                    <a href="#" class="add-to-cart-btn">Delete</a>
+                    <div style="display: flex; gap: 10px;">
+                        <button>+1</button>
+                        <button>-1</button>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <h3>Total price: ₹{{total_price}}</h3>
+
+    <form action="{% url 'checkout' username %}" method="GET">
+        <input type="submit" value="CHECK OUT" class="add-to-cart-btn" />
+    </form>
+</body>
+</html>
+
+<!-- <body>
 	<h2>{{username}}'s Cart</h2>
 	
 	<table border="1">
@@ -41,4 +78,4 @@
 		</form>
 	</table>
 </body>
-</html>
+</html> -->
