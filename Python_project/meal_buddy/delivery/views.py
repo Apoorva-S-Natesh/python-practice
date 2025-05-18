@@ -1,6 +1,9 @@
 from django.shortcuts import render,  get_object_or_404
 from django.http import HttpResponse
 from .models import Customer,Restaurant,Item,Cart, Cart_Item
+from django.contrib import messages
+from django.shortcuts import redirect
+from django.urls import reverse
 
 import razorpay
 from django.conf import settings
@@ -198,8 +201,9 @@ def add_to_cart(request, item_id, username) :
 	#creates is avariable (bool) considering if variable is present or not, if present returns the same if not its createed
 	
 	cart.items.add(item)
-
-	return HttpResponse("added to cart")
+	messages.success(request, f"{item.name} has been added to your cart.")
+	return redirect(reverse('view_menu', args=[item.restaurant.id, username]))
+ 	# return HttpResponse("added to cart")
 
 def view_cart(request, username):
 	customer = Customer.objects.get(username = username)

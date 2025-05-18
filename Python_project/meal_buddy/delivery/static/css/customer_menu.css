@@ -162,3 +162,34 @@ body {
 	background-color: var(--accent-color);
 	color: var(--primary-text-color);
 }
+
+.messages {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.alert {
+    padding: 10px 20px;
+    background-color: #CFF679; /* Light green for success */
+    color: #292828;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    animation: fadeOut 3s forwards;
+}
+
+.alert.success {
+    background-color: #CFF679;
+}
+
+.alert.error {
+    background-color: #E94560;
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; }
+}
