@@ -4,11 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'css/cart.css' %}">
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
+
 <body>
+
+	<div class="checkout-container">
+		<h1 class="checkout-heading">Checkout</h1>
+		<h2 class="checkout-subheading">Welcome, {{ username }}</h2>
+
+		{% if error %}
+			<p class="error-message">{{ error }}</p>
+		{% else %}
+			<div class="checkout-card">
+				<table class="checkout-table">
+					<thead>
+						<tr>
+							<th>Item</th>
+							<th>Price</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for item in cart_items %}
+						<tr>
+							<td>{{ item.name }}</td>
+							<td>₹{{ item.price }}</td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+
+				<h3 class="checkout-total">Total: ₹{{ total_price }}</h3>
+
+				<div class="checkout-button-container">
+					<button id="rzp-button" class="btn">Pay with Razorpay</button>
+				</div>
+			</div>
+		{% endif %}
+	</div>
+
+	<script>
+		var options = {
+			"key": "{{ razorpay_key_id }}",
+			"amount": "{{ total_price|floatformat:2|add:'0.00'|floatformat:2 }}00",
+			"currency": "INR",
+			"name": "Meal Buddy",
+			"description": "Order Payment",
+			"order_id": "{{ order_id }}",
+			"handler": function (response) {
+				alert("Payment Successful!");
+				window.location.href = "{% url 'orders' username %}";
+			},
+			"prefill": {
+				"name": "{{ username }}",
+				"email": "customer@example.com",
+				"contact": "7795890737"
+			},
+			"theme": {
+				"color": "#528FF0"
+			}
+		};
+		var rzp = new Razorpay(options);
+		document.getElementById('rzp-button').onclick = function(e) {
+			rzp.open();
+			e.preventDefault();
+		}
+	</script>
+
+</body>
+</html>
+
+<!-- <body>
     <h1>Checkout</h1>
-    <h2>Welcome, {{ username }}</h2>
+    <h2>Hi, {{ username }}! Enjoy your meal</h2>
 
     {% if error %}
     <p style="color: red;">{{ error }}</p>
@@ -65,4 +135,4 @@
     </script>
     
 </body>
-</html>
+</html> -->
