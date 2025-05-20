@@ -240,6 +240,7 @@ def checkout(request, username):
     if total_price == 0:
         return render(request, 'delivery/checkout.html', {
             'error': 'Your cart is empty!',
+			'username': username,
         })
 
     # Initialize Razorpay client

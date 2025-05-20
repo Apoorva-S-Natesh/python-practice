@@ -4,8 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">    
     <title>Order Summary</title>
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'css/order-summary.css' %}">
 </head>
 <body>
+    <div class="summary-container">
+        <div class="thank-you-box">
+            <h1>Thank you for your order, {{ username }}!</h1>
+            <div class="gif-container">
+                <img src="{% static 'images/waiting.gif' %}" alt="Processing..." class="loading-gif">
+            </div>
+            <div class="address-box">
+                <h2>Delivery Address</h2>
+                <p>{{ customer.address }}</p>
+                <p>Your order will be delivered shortly. Thank you for choosing <strong>Meal Buddy</strong>!</p>
+            </div>
+
+            <div class="nav-back">
+                {% if cart_items %}
+                    <a href="{% url 'customer_menu' cart_items.0.restaurant.id username %}" class="btn">Back to Restaurants</a>
+                {% else %}
+                    <a href="/" class="btn">Back to Home</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+<!-- <body>
     <h1>Thank you for your order, {{ username }}!</h1>
 
 
@@ -20,4 +45,4 @@
         <a href="/">Back to Home</a>
     {% endif %}
 </body>
-</html>
+</html> -->
