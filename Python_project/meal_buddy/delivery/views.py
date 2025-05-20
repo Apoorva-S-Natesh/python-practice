@@ -201,6 +201,13 @@ def add_to_cart(request, item_id, username) :
 	#creates is avariable (bool) considering if variable is present or not, if present returns the same if not its createed
 	
 	cart.items.add(item)
+
+	# Create or update Cart_Item for quantity tracking
+	cart_item, created = Cart_Item.objects.get_or_create(cart=cart, menu_item=item)
+	if not created:
+		cart_item.quantity += 1
+		cart_item.save()
+
 	messages.success(request, f"{item.name} has been added to your cart.")
 	return redirect(reverse('view_menu', args=[item.restaurant.id, username]))
  	# return HttpResponse("added to cart")
@@ -209,11 +216,19 @@ def view_cart(request, username):
 	customer = Customer.objects.get(username = username)
 	cart = Cart.objects.filter(customer = customer).first() #Fetching all the objects from Cart table which belong to the perticular customer and fetching the first of them
 	# That returns a list of the latest cart
-	items = cart.items.all() if cart else [] # if cart objects exists then give all items present in the cart if not gives an empty list
-	total_price = cart.total_price() if cart else 0
+	cart_items = cart.cart_items.all() if cart else [] # if cart objects exists then give all items present in the cart if not gives an empty list
+	total_price = sum(item.get_price() for item in cart_items)
 
 	#return HttpResponse(f"In {username}'s cart")
-	return render(request, 'delivery/cart.html', {"items": items, "total_price": total_price, "username":username})
+	return render(request, 'delivery/cart.html', {"items": cart_items, "total_price": total_price, "username":username})
+
+def delete_item_from_cart(request, username, item_id):
+	cart_item = get_object_or_404(Cart_Item, id=item_id)
+	cart_item.delete()
+
+	# return HttpResponse("Item deleted from cart")
+	messages.success(request, "Item successfully removed from cart.")
+	return redirect(reverse('view_cart', args=[username]))
 
 def checkout(request, username):
     # Fetch customer and their cart

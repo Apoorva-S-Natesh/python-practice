@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 # Create your models here.
 """Extend to Model class inside models module or package"""
@@ -34,10 +35,10 @@ class Cart(models.Model):
 		return sum(item.price for item in self.items.all())
 	
 class Cart_Item(models.Model):
-	cart = models.ForeignKey(Cart, on_delete=models.CASCADE, related_name = "cart_items")
+	cart = models.ForeignKey(Cart, on_delete=models.CASCADE, related_name = "cart_items", null=True)
 	menu_item = models.ForeignKey('Item', on_delete=models.CASCADE)
 	quantity = models.PositiveIntegerField(default = 1)
-	added_at = models.DateTimeField(auto_now_add = True)
+	added_at = models.DateTimeField(default=timezone.now)
 
 	def get_price(self):
 		return self.menu_item.price * self.quantity
