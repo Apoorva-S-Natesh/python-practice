@@ -4,12 +4,15 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Admin Page</title>
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'css/admin_home.css' %}">
 </head>
 <body>
-	<h3>Welcome ADMIN</h3>
-	<a href="open_add_restaurant">Add New Restaurant</a>
-	<br><br>
-	<a href="open_show_restaurant">Show Restaurants</a>
+	<h3>Welcome, ADMIN</h3>
+	<div class="admin-links">
+		<a href="open_add_restaurant">➕ Add New Restaurant</a>
+		<a href="open_show_restaurant">📋 Show Restaurants</a>
+	</div>
 </body>
 </html>
 
