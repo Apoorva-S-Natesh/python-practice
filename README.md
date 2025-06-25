@@ -33,7 +33,7 @@ This is a Django-based web application for a **meal ordering platform**, designe
 ## Tech Stack
 
 - **Backend**: Django (Python)
-- **Frontend**: HTML, Bootstrap (assumed from template usage)
+- **Frontend**: HTML, CSS
 - **Database**: SQLite (default Django DB)
 - **Payment Gateway**: Razorpay
 
