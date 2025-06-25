@@ -1,4 +1,4 @@
-# 🍽️ Meal Ordering System - Django Web App
+# Meal Ordering System - Django Web App
 
 This is a Django-based web application for a **meal ordering platform**, designed as a practice project. It supports functionalities for user authentication, restaurant and menu management, item browsing, cart management, and order placement with Razorpay integration for payment.
 
@@ -119,3 +119,6 @@ Access the site at: `http://127.0.0.1:8000/`
 - Enhanced UI with responsiveness
 - Order history and item ratings
 - Whole of Delivery System and tracking
+
+![Sign Up/ Sign In screen](./Python_project/meal_buddy/static/mock1.png)
+![Customer Home screen and checoupage](./Python_project/meal_buddy/static/mock2.png)
